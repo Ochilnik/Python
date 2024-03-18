@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+import sys
+import subprocess
+
+with open(sys.argv[1], "w+") as f:
+    f.readlines()
+line.strip()
+
+string.replace("jane", "jdoe")
+
+ subprocess.run()
+mv source destination
+f.close()
