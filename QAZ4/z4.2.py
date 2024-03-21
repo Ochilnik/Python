@@ -4,4 +4,5 @@ sum = int(input("Input sum: "))
 
 k = sum//(costOne*kurs)
 #k = floor(k)
-print('Для набору вхідних даних (курс = ',kurs,', сума = ',sum,') - кількость - ',k)
+#'Для набору вхідних даних (курс = ',kurs,', сума = ',sum,') - кількость - ',
+print(k)
