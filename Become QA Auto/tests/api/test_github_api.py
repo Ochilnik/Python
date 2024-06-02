@@ -46,5 +46,20 @@ def test_repo_cannot_be_found(github_api):
 @pytest.mark.api
 def test_repo_with_single_char_be_found(github_api):
     r = github_api.search_repo('y')
-#    print(r['total_count'])
+    print(r['total_count'])
     assert r['total_count'] != 0
+
+@pytest.mark.apitemp
+def test_list_templates(github_api):
+    r = github_api.list_gitignore_templates()
+#    print(r)
+    assert r != 0
+
+@pytest.mark.apitemp
+def test_template(github_api):
+    template = 'RhodesRhomobile'
+    r = github_api.get_template(template)
+#    print(r)
+    assert r['name'] == template
+
+

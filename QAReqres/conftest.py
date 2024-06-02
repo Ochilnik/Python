@@ -1,7 +1,7 @@
 import pytest
-from modules.api.clients.gihub import GitHub
 from modules.api.clients.reqresin import Reqres
 
+'''
 class User:
 
     def __init__(self) -> None:
@@ -31,7 +31,7 @@ def user():
 def github_api():
     api = GitHub()
     yield api
-
+'''
 
 @pytest.fixture
 def reqres_api():
