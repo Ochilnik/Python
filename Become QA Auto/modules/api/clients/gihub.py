@@ -8,24 +8,6 @@ class GitHub:
 
         return body
 
-
-#import requests
-#
-#class GitHub:
-#
-#    def get_user_defunkt(self):
-#        r = requests.get('https://api.github.com/users/defunkt')
-#        body = r.json()
-#
-#        return body
-#
-#    def get_non_exist_user(self):
-#        r = requests.get('https://api.github.com/users/andriicherniavskyi')
-#        body = r.json()
-#
-#        return body    
-
-
     def search_repo(self, name):
         r = requests.get(
             "https://api.github.com/search/repositories",
