@@ -1,6 +1,10 @@
 import pytest
 from modules.common.database import Database
 
+@pytest.mark.dbquery
+def test_database_query():
+    db = Database()
+    print(db.test_query())
 
 @pytest.mark.database
 def test_database_connection():
@@ -25,15 +29,27 @@ def test_check_customer():
     assert customer[0][3] == '194A Chain Lake Drive'
     assert customer[0][4] == 'Halifax'
     assert customer[0][6] == 'Canada'
-'''
+
 @pytest.mark.database
-def test_product_qnt_update():
+def test_all_invoice_items():
     db = Database()
-    db.update_product_qnt_by_id(1, 25)
-    water_qnt = db.select_product_qnt_by_id(1)
+    items = db.get_invoice_items()
+    print(items[2238])
+#    print(customers[51][4])
+#    assert customers[51][4] == '202 Hoxton Street'
 
-    assert water_qnt[0][0] == 25
+@pytest.mark.database
+def test_invoice_qnt_update():
+    itemid = 22
+#    qnt = 25
+    db = Database()
+    print(db.select_invoice_quantity(itemid))
+#    db.update_invoice_quantity(itemid, qnt)
+#    print(db.select_invoice_quantity(itemid))
+#    water_qnt = db.select_product_qnt_by_id(2238)
+#    assert water_qnt[0][0] == 25
 
+'''
 @pytest.mark.database
 def test_product_insert():
     db = Database()

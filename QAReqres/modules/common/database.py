@@ -6,7 +6,16 @@ class Database():
     def __init__(self):
         self.connection = sqlite3.connect(r'/mnt/DATA/My_Projects/Python/QAReqres' + r'/chinook.db')
         self.cursor = self.connection.cursor()
+    #    self.connection.row_factory = sqlite3.Row
+    #    row = self.cursor.fetchone()
+    #    self.names = row.keys()
 
+    def test_query(self):
+        query = "PRAGMA table_info(invoice_items)"
+        self.cursor.execute(query)
+        record = self.cursor.fetchall()
+        return record        
+    
     def test_connection(self):
         sqlite_select_Query = "SELECT sqlite_version();"
         self.cursor.execute(sqlite_select_Query)
@@ -27,18 +36,26 @@ class Database():
         self.cursor.execute(query)
         record = self.cursor.fetchall()
         return record
-'''
-    def update_product_qnt_by_id(self, product_id, qnt):
-        query = f"UPDATE products SET quantity = {qnt} WHERE id = {product_id}"
+    
+    def get_invoice_items(self):
+        query = "SELECT * FROM invoice_items"
+        self.cursor.execute(query)
+        record = self.cursor.fetchall()
+        return record
+        
+    def update_invoice_quantity(self, id, qnt):
+        query = f"UPDATE invoice_items SET Quantity = {qnt} WHERE InvoiceLineId = {id}"
         self.cursor.execute(query)
         self.connection.commit()
 
-    def select_product_qnt_by_id(self, product_id):
-        query = f"SELECT quantity FROM products WHERE id = {product_id}"
+    def select_invoice_quantity(self, id):
+        query = f"SELECT Quantity FROM invoice_items WHERE InvoiceLineId = {id}"
+    #    query = "PRAGMA table_info(invoice_items)"
         self.cursor.execute(query)
         record = self.cursor.fetchall()
         return record
 
+'''
     def insert_product(self, product_id, name, description, qnt):
         query = f"INSERT OR REPLACE INTO products (id, name, description, quantity) \
             VALUES ({product_id}, '{name}', '{description}', {qnt})"
