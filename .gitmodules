@@ -1,0 +1,3 @@
+[submodule "QAReqres"]
+	path = QAReqres
+	url = https://github.com/Ochilnik/QAReqres.git
